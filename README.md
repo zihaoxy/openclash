@@ -72,6 +72,10 @@
     custom_proxy_group=Group_Name`url-test|fallback|load-balance`Rule_1`Rule_2`...`test_url`interval[,timeout][,tolerance]
 
     custom_proxy_group=Group_Name`select`Rule_1`Rule_2`...
+  
+url-test 可以定时对包含的代理执行连通性检查，自动选择延迟最短的服务器，不健康的代理会被跳过
+fallback 可以尽量按照用户书写的服务器顺序，在确保服务器可用的情况下，由上至下自动选择服务器，不健康的代理会被跳过。
+load-balance 能充分利用多个代理的带宽，不健康的代理会被跳过。
 
     # 格式示例
 
