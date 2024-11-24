@@ -31,3 +31,8 @@ DOMAIN-SUFFIX,toutiaovod.com
 DOMAIN-SUFFIX,snssdk.com
 #抖音
 DOMAIN-SUFFIX,idouyinvod.com
+
+#测速地址
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,cp.cloudflare.com
+DOMAIN-SUFFIX,captive.apple.com
