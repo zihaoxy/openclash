@@ -1,6 +1,11 @@
 # openclash的相关设置
 
 
+###  优先IP
+  [proxyIP] (https://raw.githubusercontent.com/zihaoxy/openclash/refs/heads/main/proxyIP)
+### 反代IP 
+  [PROXYIP] (https://raw.githubusercontent.com/zihaoxy/openclash/refs/heads/main/PROXYIP)
+
 ### 订阅转换模板
 
   模板文件 [xynet.ini](https://raw.githubusercontent.com/zihaoxy/openclash/main/xynet.ini)
