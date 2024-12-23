@@ -1,8 +1,8 @@
 # openclash的相关设置
 
 ## 代理
-  优先IP  [proxyIP] (https://raw.githubusercontent.com/zihaoxy/openclash/main/proxyIP.txt)
-  反代IP  [PROXYIP] (https://raw.githubusercontent.com/zihaoxy/openclash/main/PROXYIP.txt)
+  优先IP  [proxyIP](https://raw.githubusercontent.com/zihaoxy/openclash/main/proxyIP.txt)
+  反代IP  [PROXYIP](https://raw.githubusercontent.com/zihaoxy/openclash/main/PROXYIP.txt)
 
 ### 订阅转换模板
 
