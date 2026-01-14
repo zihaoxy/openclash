@@ -4,16 +4,16 @@
 # 机场订阅
 proxy-providers:
   starlinkclash:
-    url: "https://rss-starlink.ei38d3if3.xyz/s/3d3e9d944853ec89890c24a6dddb3f43"
+    url: ""
     type: http
     interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 直连
-  free1:
-    url: "http://192.168.100.201:3001/7S5VLZnuRCwvTckJ4W5h/download/%E9%A6%99%E6%B8%AF?target=ClashMeta"
+    proxy: 🚀 默认代理
+  icy:
+    url: ""
     type: http
     interval: 86400
     health-check:
@@ -21,8 +21,8 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 直连  
-  icy-workers:
-    url: "https://url.v1.mk/sub?target=clash&url=https%3A%2F%2Ficy.xynet.ggff.net%2Ficy%2Fsub&insert=false"
+  subsnip:
+    url: ""
     type: http
     interval: 86400
     health-check:
@@ -30,6 +30,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 直连 
+
 
 # 节点信息
 proxies:
@@ -100,7 +101,7 @@ dns:
   ipv6: false
   respect-rules: true
   enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.1/8
+  fake-ip-range: 198.18.0.1/15
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
     - "rule-set:private_domain,cn_domain"
@@ -121,53 +122,47 @@ dns:
 # 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 📹 YouTube, type: select, proxies: [🔯 美国故转, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, ♻️ 美国自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🍀 Google, type: select, proxies: [🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🤖 ChatGPT, type: select, proxies: [🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 👨🏿‍💻 GitHub, type: select, proxies: [🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🐬 OneDrive, type: select, proxies: [🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🪟 Microsoft, type: select, proxies: [🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🐟 Game, type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🎵 TikTok, type: select, proxies: [🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 📲 Telegram, type: select, proxies: [🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🎥 NETFLIX, type: select, proxies: [🔯 狮城故转, 🔯 香港故转, 🔯 日本故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 💶 PayPal, type: select, proxies: [🔯 日本故转, 🔯 香港故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)日|jp|japan"}
-  - {name: 🇸🇬 狮城节点, type: select, include-all: true, filter: "(?i)新加坡|坡|狮城|SG|Singapore"}
-  - {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 广告拦截, type: select, proxies: [DIRECT, REJECT]}
-  - {name: 应用净化, type: select, proxies: [DIRECT, REJECT]}
+  - {name: "🚀 默认代理", type: "select", proxies: ["🔯 香港故转", "🔯 日本故转", "🔯 狮城故转", "🔯 美国故转", "♻️ 香港自动", "♻️ 日本自动", "♻️ 狮城自动", "♻️ 美国自动", "♻️ 自动选择", "🌐 全部节点"], url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true}
+  - {name: "📹 YouTube", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.youtube.com/generate_204", interval: 300, tolerance: 50, lazy: true}
+  - {name: "🍀 Google", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "http://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true}
+  - {name: "🤖 ChatGPT", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://chatgpt.com/cdn/assets/favicon-eex17e9e.ico", interval: 300, tolerance: 80, lazy: true}
+  - {name: "👨🏿‍💻 GitHub", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://github.githubassets.com/favicon.ico", interval: 300, tolerance: 50, lazy: true}
+  - {name: "🎥 NETFLIX", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.netflix.com/favicon.ico", interval: 300, tolerance: 80, lazy: true}
+  - {name: "🐬 OneDrive", type: "select", proxies: ["🚀 默认代理", "🔯 香港故转", "🔯 日本故转", "🔯 狮城故转", "🔯 美国故转", "♻️ 香港自动", "♻️ 日本自动", "♻️ 狮城自动", "♻️ 美国自动", "♻️ 自动选择", "🌐 全部节点", "直连"]}
+  - {name: "🪟 Microsoft", type: "select", proxies: ["🚀 默认代理", "🔯 香港故转", "🔯 日本故转", "🔯 狮城故转", "🔯 美国故转", "♻️ 香港自动", "♻️ 日本自动", "♻️ 狮城自动", "♻️ 美国自动", "♻️ 自动选择", "🌐 全部节点", "直连"]}
+  - {name: "🐟 Game", type: "select", proxies: ["🚀 默认代理", "🔯 香港故转", "🔯 日本故转", "🔯 狮城故转", "🔯 美国故转", "♻️ 香港自动", "♻️ 日本自动", "♻️ 狮城自动", "♻️ 美国自动", "♻️ 自动选择", "🌐 全部节点", "直连"]}
+  - {name: "🎵 TikTok", type: "select", proxies: ["🚀 默认代理", "🔯 香港故转", "🔯 日本故转", "🔯 狮城故转", "🔯 美国故转", "♻️ 香港自动", "♻️ 日本自动", "♻️ 狮城自动", "♻️ 美国自动", "♻️ 自动选择", "🌐 全部节点", "直连"]}
+  - {name: "📲 Telegram", type: "select", proxies: ["🚀 默认代理", "🔯 香港故转", "🔯 日本故转", "🔯 狮城故转", "🔯 美国故转", "♻️ 香港自动", "♻️ 日本自动", "♻️ 狮城自动", "♻️ 美国自动", "♻️ 自动选择", "🌐 全部节点", "直连"]}
+  - {name: "💶 PayPal", type: "select", proxies: ["🚀 默认代理", "🔯 香港故转", "🔯 日本故转", "🔯 狮城故转", "🔯 美国故转", "♻️ 香港自动", "♻️ 日本自动", "♻️ 狮城自动", "♻️ 美国自动", "♻️ 自动选择", "🌐 全部节点", "直连"]}
+  - {name: "🐟 漏网之鱼", type: "select", proxies: ["🚀 默认代理", "♻️ 自动选择", "🌐 全部节点", "直连"]}
 
-  - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
-  - {name: 🔯 狮城故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|美)).)*$"}
-  - {name: 🔯 美国故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|韩|新|日)).)*$" }
-  - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
-  - {name: ♻️ 狮城自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美)).)*$" }
-  - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
-  - {name: 🌐 全部节点, type: select, include-all: true}
+  - {name: "🔯 香港故转", type: "fallback", include-all: true, tolerance: 20, interval: 300, filter: "(?i)(港|hk|hong)"}
+  - {name: "🔯 日本故转", type: "fallback", include-all: true, tolerance: 20, interval: 300, filter: "(?i)(日|jp|japan)"}
+  - {name: "🔯 狮城故转", type: "fallback", include-all: true, tolerance: 20, interval: 300, filter: "(?i)(新加坡|坡|狮城|sg|singapore)"}
+  - {name: "🔯 美国故转", type: "fallback", include-all: true, tolerance: 20, interval: 300, filter: "(?i)(美|us|states|america)"}
+
+  - {name: "♻️ 香港自动", type: "url-test", include-all: true, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true, filter: "(?i)(港|hk|hong)"}
+  - {name: "♻️ 日本自动", type: "url-test", include-all: true, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true, filter: "(?i)(日|jp|japan)"}
+  - {name: "♻️ 狮城自动", type: "url-test", include-all: true, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true, filter: "(?i)(新加坡|坡|狮城|sg|singapore)"}
+  - {name: "♻️ 美国自动", type: "url-test", include-all: true, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true, filter: "(?i)(美|us|states|america)"}
+  - {name: "♻️ 自动选择", type: "url-test", include-all: true, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true, filter: "^((?!(直连)).)*$"}
+
+  - {name: "🌐 全部节点", type: "select", include-all: true}
+
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
-  - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
-  - RULE-SET,proxylite,🚀 默认代理
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,BanProgramAD,REJECT
   - RULE-SET,gamelite,🐟 Game
   - RULE-SET,origin,🐟 Game
   - RULE-SET,sony,🐟 Game
   - RULE-SET,steam,🐟 Game
   - RULE-SET,nintendo,🐟 Game
   - RULE-SET,epic,🐟 Game
-  - RULE-SET,广告拦截,广告拦截
-  - RULE-SET,应用净化,应用净化
-
   - RULE-SET,ai,🤖 ChatGPT
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,youtube_domain,📹 YouTube
@@ -183,6 +178,8 @@ rules:
   - RULE-SET,google_ip,🍀 Google,no-resolve
   - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
   - RULE-SET,telegram_ip,📲 Telegram,no-resolve
+  - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
+  - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,geolocation-!cn,🚀 默认代理
   - RULE-SET,cn_domain,直连
   - RULE-SET,cn_ip,直连
@@ -201,10 +198,8 @@ rule-providers:
   steam: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list"}
   nintendo: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list"}
   epic: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list"}
-  广告拦截: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"}
-  应用净化: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list"}
-
-
+  BanAD: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"}
+  BanProgramAD: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list"}
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list"}
   ai: {  <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
