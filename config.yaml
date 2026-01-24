@@ -130,7 +130,7 @@ rules:
   - RULE-SET,BanProgramAD,REJECT
   - RULE-SET,self_game1,🚀 game
   - RULE-SET,ai_openai,🤖 ChatGPT
-  - RULE-SET,ai_copilot,🤖 ChatGPT
+  - RULE-SET,ai_copilot,👨🏿‍💻 GitHub
   - RULE-SET,ai_other,🤖 ChatGPT
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,youtube_domain,📹 YouTube
