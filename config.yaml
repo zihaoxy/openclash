@@ -4,7 +4,7 @@
 # 机场订阅
 proxy-providers:
   starlinkclash:
-    url: "https://rssstarlink.ei38d3if3.xyz/s/b5cae56528e10b2009934bb8be10cc9f"
+    url: "url1"  #修改为自己的订阅地址
     type: http
     interval: 86400
     health-check:
@@ -13,7 +13,7 @@ proxy-providers:
       interval: 300
     proxy: 🚀 默认代理
   icy:
-    url: "https://icy.xynet.ggff.net/icy/sub"
+    url: "url2"  #修改为自己的订阅地址
     type: http
     interval: 86400
     health-check:
@@ -22,7 +22,7 @@ proxy-providers:
       interval: 300
     proxy: 直连  
   subsnip:
-    url: "https://subsnip.xynet.ggff.net/xynet?sub"
+    url: "url3"  #修改为自己的订阅地址
     type: http
     interval: 86400
     health-check:
