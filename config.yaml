@@ -1,0 +1,166 @@
+# 必读！！！
+# 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
+# 跑裸核用户请自行去掉下方控制面板模块的注释。
+# 机场订阅
+proxy-providers:
+  starlinkclash:
+    url: "https://rssstarlink.ei38d3if3.xyz/s/b5cae56528e10b2009934bb8be10cc9f"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 🚀 默认代理
+  icy:
+    url: "https://icy.xynet.ggff.net/icy/sub"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连  
+  subsnip:
+    url: "https://subsnip.xynet.ggff.net/xynet?sub"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连 
+
+# =========================
+# 节点
+# =========================
+proxies:
+  - {name: 直连, type: direct}
+
+# =========================
+# 全局配置
+# =========================
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7894
+allow-lan: true
+bind-address: "*"
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+log-level: warning
+# find-process-mode: off
+global-client-fingerprint: chrome
+keep-alive-idle: 600
+keep-alive-interval: 15
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# =========================
+# Sniffer
+# =========================
+sniffer:
+  enable: true
+  sniff:
+    HTTP: {ports: [80, 8080-8085], override-destination: true}
+    TLS: {ports: [443]}
+  force-domain: ["+.v2ex.com"]
+  skip-domain: ["+.baidu.com"]
+
+# =========================
+# TUN
+# =========================
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack: ["any:53"]
+  auto-route: false
+  auto-redirect: false
+  auto-detect-interface: false
+
+# =========================
+# DNS
+# =========================
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  respect-rules: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/15
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - "rule-set:private_domain,cn_domain"
+    - "rule-set:telegram_domain"
+    - "+.msftconnecttest.com"
+  default-nameserver: [223.5.5.5]
+  proxy-server-nameserver: [https://223.5.5.5/dns-query]
+  nameserver: [223.5.5.5, 211.137.58.20]
+
+# =========================
+# Proxy Groups（Telegram去掉默认代理/直连，增加节点状态可视化）
+# =========================
+proxy-groups:
+  - {name: "🚀 默认代理", type: select, proxies: ["🔯 香港故转","🔯 日本故转","🔯 狮城故转","🔯 美国故转","♻️ 自动选择","🌐 全部节点"]}
+  - {name: "📹 YouTube", type: fallback, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.youtube.com/s/desktop/", interval: 600, tolerance: 80}
+  - {name: "🎥 NETFLIX", type: fallback, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.netflix.com/title/80018499", interval: 600, tolerance: 80}
+  - {name: "🤖 ChatGPT", type: fallback, include-all: true, filter: "^((?!(直连)).)*$", url: "https://chat.openai.com/cdn-cgi/trace", interval: 600, tolerance: 80}
+  - {name: "👨🏿‍💻 GitHub", type: fallback, include-all: true, filter: "^((?!(直连)).)*$", url: "https://github.com", interval: 600, tolerance: 80}
+  - {name: "🍀 Google", type: fallback, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.gstatic.com/generate_204", interval: 600, tolerance: 80}
+  - {name: "📲 Telegram", type: fallback, include-all: true, filter: "^((?!(直连)).)*$", url: "https://api.telegram.org", interval: 600, tolerance: 80}
+  - {name: "🚀 game", type: select, proxies: ["🔯 香港故转","🔯 日本故转","🔯 狮城故转","🔯 美国故转","♻️ 自动选择","🌐 全部节点"]}
+  - {name: "🔯 香港故转", type: fallback, include-all: true, filter: "(?i)(港|hk)", interval: 600}
+  - {name: "🔯 日本故转", type: fallback, include-all: true, filter: "(?i)(日|jp)", interval: 600}
+  - {name: "🔯 狮城故转", type: fallback, include-all: true, filter: "(?i)(新|sg)", interval: 600}
+  - {name: "🔯 美国故转", type: fallback, include-all: true, filter: "(?i)(美|us)", interval: 600}
+  - {name: "♻️ 自动选择", type: url-test, include-all: true, url: "https://www.gstatic.com/generate_204", interval: 600}
+  - {name: "🌐 全部节点", type: select, include-all: true}
+
+# =========================
+# Rules
+# =========================
+rules:
+  - RULE-SET,private_ip,直连,no-resolve
+  - RULE-SET,private_domain,直连
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,BanProgramAD,REJECT
+  - RULE-SET,self_game1,🚀 game
+  - RULE-SET,ai_openai,🤖 ChatGPT
+  - RULE-SET,ai_copilot,🤖 ChatGPT
+  - RULE-SET,ai_other,🤖 ChatGPT
+  - RULE-SET,github_domain,👨🏿‍💻 GitHub
+  - RULE-SET,youtube_domain,📹 YouTube
+  - RULE-SET,netflix_domain,🎥 NETFLIX
+  - RULE-SET,google_domain,🍀 Google
+  - RULE-SET,telegram_domain,📲 Telegram
+  - RULE-SET,telegram_ip,📲 Telegram,no-resolve
+  - RULE-SET,geolocation-!cn,🚀 默认代理
+  - RULE-SET,cn_domain,直连
+  - RULE-SET,cn_ip,直连
+  - MATCH,🚀 默认代理
+
+# =========================
+# Rule Providers
+# =========================
+rule-providers:
+  self_game1: {type: http, interval: 86400, behavior: domain, format: text, url: https://raw.githubusercontent.com/zihaoxy/openclash/refs/heads/main/game.list}
+  
+  private_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs}
+  private_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs}
+  BanAD: {type: http, interval: 86400, behavior: classical, format: text, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list}
+  BanProgramAD: {type: http, interval: 86400, behavior: classical, format: text, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list}
+  ai_openai: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs}
+  ai_copilot: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geo-site/github-copilot.mrs}
+  ai_other: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs}
+  github_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs}
+  youtube_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs}
+  netflix_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs}
+  google_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs}
+  telegram_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs}
+  telegram_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs}
+  geolocation-!cn: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs}
+  cn_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs}
+  cn_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs}
