@@ -102,27 +102,31 @@ dns:
   nameserver: [223.5.5.5, 211.137.58.20]
 
 # =========================
-# Proxy Groups（Telegram去掉默认代理/直连，增加节点状态可视化）
+# Proxy Groups（优化了测试地址 + 类型 + lazy）
 # =========================
 proxy-groups:
   - {name: "🚀 默认代理", type: select, proxies: ["🔯 香港故转","🔯 日本故转","🔯 狮城故转","🔯 美国故转","♻️ 自动选择","🌐 全部节点"]}
   - {name: "🚀 game", type: select, proxies: ["🔯 香港故转","🔯 日本故转","🔯 狮城故转","🔯 美国故转","♻️ 自动选择","🌐 全部节点"]}
-  - {name: "📹 YouTube", type: "select", include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.youtube.com/s/desktop/", interval: 600, tolerance: 80}
-  - {name: "🎥 NETFLIX", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.netflix.com/title/80018499", interval: 600, tolerance: 80}
-  - {name: "🤖 ChatGPT", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://chat.openai.com/cdn-cgi/trace", interval: 600, tolerance: 80}
-  - {name: "👨🏿‍💻 GitHub", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://github.com", interval: 600, tolerance: 80}
-  - {name: "🍀 Google", type: select, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.gstatic.com/generate_204", interval: 600, tolerance: 80}
-  - {name: "📲 Telegram", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://api.telegram.org", interval: 600, tolerance: 80}
-  - {name: "copilot", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://copilot.microsoft.com", interval: 600, tolerance: 80}
+
+  - {name: "📹 YouTube", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.youtube.com/premium", interval: 600, tolerance: 80, lazy: true}
+  - {name: "🎥 NETFLIX", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.netflix.com/title/80100172", interval: 600, tolerance: 80, lazy: true}
+  - {name: "🤖 ChatGPT", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://chat.openai.com/cdn-cgi/trace", interval: 600, tolerance: 80, lazy: true}
+
+  - {name: "👨🏿‍💻 GitHub", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://github.com", interval: 600, tolerance: 80, lazy: true}
+  - {name: "🍀 Google", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.google.com/search?q=ip", interval: 600, tolerance: 80, lazy: true}
+  - {name: "📲 Telegram", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://api.telegram.org", interval: 600, tolerance: 80, lazy: true}
+  - {name: "copilot", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://copilot.microsoft.com", interval: 600, tolerance: 80, lazy: true}
+
   - {name: "🔯 香港故转", type: fallback, include-all: true, filter: "(?i)(港|hk)", interval: 600}
   - {name: "🔯 日本故转", type: fallback, include-all: true, filter: "(?i)(日|jp)", interval: 600}
   - {name: "🔯 狮城故转", type: fallback, include-all: true, filter: "(?i)(新|sg)", interval: 600}
   - {name: "🔯 美国故转", type: fallback, include-all: true, filter: "(?i)(美|us)", interval: 600}
-  - {name: "♻️ 自动选择", type: "url-test", include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true}
+
+  - {name: "♻️ 自动选择", type: url-test, include-all: true, filter: "^((?!(直连)).)*$", url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50, lazy: true}
   - {name: "🌐 全部节点", type: select, include-all: true}
 
 # =========================
-# Rules
+# Rules（TikTok 移到默认代理）
 # =========================
 rules:
   - RULE-SET,private_ip,直连,no-resolve
@@ -141,7 +145,7 @@ rules:
   - RULE-SET,google_domain,🍀 Google
   - RULE-SET,telegram_domain,📲 Telegram
   - RULE-SET,telegram_ip,📲 Telegram,no-resolve
-  - RULE-SET,tiktok_domain,🤖 ChatGPT
+  - RULE-SET,tiktok_domain,🚀 默认代理          # ← 改动：从 ChatGPT 移到默认代理
   - RULE-SET,BanAD,REJECT
   - RULE-SET,BanProgramAD,REJECT
   - RULE-SET,geolocation-!cn,🚀 默认代理
